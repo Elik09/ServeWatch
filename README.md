@@ -43,5 +43,5 @@ model, meaning it will run completely in the background without requiring any wo
 ## Dashboard
 - [ ] Failed and Successful login attempts
 - [ ] Offline logs
-- [ ] Set configurations
+- [ ] Set configurations eg email
 - [ ] Set configurations
