@@ -44,4 +44,3 @@ model, meaning it will run completely in the background without requiring any wo
 - [ ] Failed and Successful login attempts
 - [ ] Offline logs
 - [ ] Set configurations eg email
-- [ ] Set configurations
