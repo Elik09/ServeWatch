@@ -20,6 +20,17 @@
 
 <br/>
 
+## Features
+- [ ] Easy to install
+- [ ] New / edited file detection
+- [ ] Recursive file scanning
+- [ ] Immediate email notifications
+- [ ] Secure login system
+- [ ] Automated background scanning
+- [ ] No hassle & easy to use!
+
+<br/>
+
 ## TODO
 - [ ] Create the database
 - [ ] Create tables
