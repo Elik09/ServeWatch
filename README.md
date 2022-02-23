@@ -16,6 +16,9 @@
 <br/>
 
 ## About
+ServeWatch is a all in one server protection solution for servers.It is simple to use, and notifies you as soon as it detects either a new file, or a change in an existing one via email. Verifile implements an 
+install and forget
+ model, meaning it will run completely in the background without requiring any work from you!
 
 
 <br/>
