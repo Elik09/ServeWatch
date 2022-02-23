@@ -35,7 +35,7 @@ model, meaning it will run completely in the background without requiring any wo
 
 ## TODO
 - [x] Database design
-- [ ] Create the database
-- [ ] Create tables
-- [ ] Create user table
+- [x] Create the database
+- [x] Create tables
+- [x] Add columns to user table
 - [ ] Add authentication
