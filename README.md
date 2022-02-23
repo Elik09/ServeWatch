@@ -1,7 +1,7 @@
 <p align="center"><img src="static/images/logo.png" width="200px" height="170px" alt="image should be here"></p>
 <h3 align="center">ServeWatch</h3>
 <p align="center">
-	<samp>Simple rest api for server security.</samp>
+	<samp>Simple project for server security.</samp>
 	<br/>
 	<a href="https://github/Elik09"><strong>Explore more of my work »</strong> </a>
 	<br/>
