@@ -2,6 +2,17 @@ from flask import Flask,render_template,url_for
 
 app = Flask(__name__)
 
+users=[
+	{
+		"username" : "allannjuguna",
+		"password" : "allanpass",
+		"email" : "allannjugush@gmail.com"
+	}
+	
+	
+]
+
+
 @app.route("/")
 @app.route("/home")
 def index():
