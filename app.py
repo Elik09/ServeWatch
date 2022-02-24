@@ -1,7 +1,4 @@
-from flask import Flask,render_template,url_for
-
-app=Flask(__name__)
-
+from flask import Flask,render_template
 
 array="my name is allan njuguna".split(' ')
 
