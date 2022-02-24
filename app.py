@@ -5,6 +5,7 @@ app=Flask(__name__)
 
 # Main route
 @app.route("/")
+@app.route("/home")
 def index():
 	return render_template('header.html',title="Main Page")
 
