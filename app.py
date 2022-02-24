@@ -15,7 +15,7 @@ users=[
 
 @app.route("/")
 def index():
-   return render_template('header.html',title="Home")
+   return render_template('index.html',title="Home")
 
 @app.route("/home")
 def home():
