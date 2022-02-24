@@ -11,7 +11,7 @@ array="my name is allan njuguna".split(' ')
 def index():
 	return render_template('header.html',title="Main Page")
 
-@app.route('/checkme')
+@app.route('/something')
 def checkme():
 	return render_template('index.html',array=array)
 
