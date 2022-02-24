@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
    return "This is the main page"
 
-dfdsf
+
 
 @app.route("/about")
 def about():
