@@ -221,6 +221,9 @@ td{
 		margin-top:0px;
 		margin-bottom:10px;
 	}
+	.form{
+		min-height: 600px;
+	}
 
 	.header-text{
 		margin:20px auto 0px auto;
