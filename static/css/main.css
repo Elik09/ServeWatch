@@ -214,7 +214,7 @@ td{
 
 
 /*Small screens*/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1300px) {
 	body{
 		background-color: red;
 
