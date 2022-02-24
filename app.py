@@ -13,7 +13,7 @@ def index():
 
 @app.route('/something')
 def checkme():
-	return render_template('header.html')
+	return render_template('index.html')
 
 
 # Configurations
