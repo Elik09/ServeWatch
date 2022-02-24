@@ -13,7 +13,8 @@ def index():
 
 @app.route('/checkme')
 def array():
-	return render_template('index.html',array=array)
+	return "this works"
+	# return render_template('index.html',array=array)
 
 # Configurations
 if (__name__ == "__main__"):
