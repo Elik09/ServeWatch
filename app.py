@@ -27,7 +27,7 @@ def login():
 
 @app.route("/register")
 def register():
-	return "This is the register endpoint"
+	return render_template('register.html',title="Login")
 
 
 
