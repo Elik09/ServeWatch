@@ -1,13 +1,10 @@
 {% extends "header.html" %}
 { % block content % }
-
-{% if array %}
+	<p>This is the index page</p>
 	{% for item in array %}
 		<p>{{ item }}</p>
 	{% endfor %}
-{% else %}
 
-{% endif%}
 
 
 { % endblock %}
