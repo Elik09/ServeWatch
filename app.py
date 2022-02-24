@@ -9,7 +9,8 @@ array="my name is allan njuguna".split(' ')
 @app.route("/")
 @app.route("/home")
 def index():
-	return render_template('header.html',title="Main Page")
+	return "This is the main page"
+	# return render_template('index.html',title="Main Page")
 
 @app.route('/something')
 def checkme():
