@@ -3,8 +3,17 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
+@app.route("/home")
 def index():
-   return "Hellodfsdf fsdsfadfdafdWorld"
+   return "This is the main page"
+
+
+
+@app.route("/about")
+def about():
+	return "This is the about page"
+
+
 
 
 if __name__ == '__main__':
