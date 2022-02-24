@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def index():
-	return "This the maidfasdfn main page"
+	return "This the main main page"
 	# return render_template('index.html',title="Main Page")
 
 @app.route('/say_hello')
