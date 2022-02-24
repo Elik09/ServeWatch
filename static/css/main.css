@@ -36,6 +36,9 @@ body{
 	font-size:25px;
 }
 
+a {
+	text-decoration: none;
+}
 
 .heading{
 	font-family: 'Yaldevi', sans-serif;
