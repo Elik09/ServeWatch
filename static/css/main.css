@@ -113,7 +113,7 @@ body{
 
 }
 
-input[type=text],input[type=email],input[type=submit],textarea{
+input[type=text],input[type=password],input[type=email],input[type=submit],textarea{
 	width: 97%;
 	font-family: sans-serif;
 	border-radius:4px;
