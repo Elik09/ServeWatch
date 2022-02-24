@@ -1,4 +1,5 @@
 from flask import Flask,render_template
+app = Flask(__name__)
 
 array="my name is allan njuguna".split(' ')
 
@@ -6,7 +7,7 @@ array="my name is allan njuguna".split(' ')
 @app.route("/")
 @app.route("/home")
 def index():
-	return "This idsafdfs tfdasfdfhe main page"
+	return "This the main main page"
 	# return render_template('index.html',title="Main Page")
 
 @app.route('/say_hello')
