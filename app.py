@@ -12,7 +12,7 @@ def index():
 	return render_template('header.html',title="Main Page")
 
 @app.route('/checkme')
-def array():
+def checkme():
 	return "this works"
 	# return render_template('index.html',array=array)
 
