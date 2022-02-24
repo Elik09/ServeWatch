@@ -9,7 +9,7 @@ array="my name is allan njuguna".split(' ')
 @app.route("/")
 @app.route("/home")
 def index():
-	return "This is the main page"
+	return "This is tfdasfdfhe main page"
 	# return render_template('index.html',title="Main Page")
 
 @app.route('/something')
@@ -19,8 +19,8 @@ def checkme():
 
 
 # Configurations
-if (__name__ == "__main__"):
+if (__name__) == "__main__":
 	# Remember to change this to enviromental variables
-	HOST="127.0.0.1"
-	PORT=5000
-	app.run(debug=True,host=HOST,port=PORT)
+    PORT=5000
+    HOST="127.0.0.1"
+    app.run(host=HOST,port=PORT,debug=True)
