@@ -5,7 +5,7 @@
 	padding:0;
 	box-sizing: border-box;
 	transition:1s ease;
-	font-family: 'Yaldevi', sans-serif;
+
 }
 
 body{
@@ -36,14 +36,19 @@ body{
 	font-size:25px;
 }
 
+
 .heading{
-	color:rgb(0, 0, 0.0.7);
-	/*font-family: serif;*/
+	font-family: 'Yaldevi', sans-serif;
+	color:rgb(0, 0, 0,0.8);
+	font-weight: bold;
+
 }
 
 .subheading{
+	font-family: 'Yaldevi', sans-serif;
 	color:rgb(50, 54, 55,0.7);
 	font-family: monospace;
+	font-weight: bold;
 }
 
 
@@ -86,7 +91,7 @@ body{
 	/*border:1px solid red;*/
 	width: 90%;
 	border-radius: 4px;
-	
+	padding:20px;
 	margin:10px auto;
 	box-shadow: 2px 2px 4px 0px rgb(50, 54, 55,0.2);
 }
@@ -96,6 +101,77 @@ body{
 	height: inherit;
 	margin:1px auto;
 	width:100%;
+}
+
+.form{
+	width: 100%;
+	margin:auto;
+	min-height:400px;
+	padding:10px;
+	margin:1px auto;
+	
+
+}
+
+input[type=text],input[type=email],input[type=submit],textarea{
+	width: 97%;
+	font-family: sans-serif;
+	border-radius:4px;
+	border:1px transparent;
+	background-color:rgb(50, 54, 55,0.1);
+	padding:5px;
+	font-weight: normal;
+	margin-bottom:10px;
+	display: block;
+	height: 35px;
+}
+
+
+
+input[type=submit]{
+	width: 30%;
+	border-radius:4px;
+	background-color:rgb(0, 191, 69,0.8);
+	border:transparent;
+	padding:5px;
+	margin-bottom:10px;
+	display: inline-block;
+	height: 35px;
+}
+
+textarea{
+	height: 200px;
+
+}
+
+
+table,th,tr,td {
+ text-align: left;
+}
+
+th {
+ text-align: left;
+  /*border-bottom:1px solid black;*/
+  font-family: 'Yaldevi', sans-serif;
+  font-size: 15px;
+}
+
+
+td{
+	color:rgb(0, 0, 0,0.8);
+	padding-top:15px;
+	/*background-color:red;*/
+}
+
+.link-text{
+	color:rgb(0, 0, 0,0.8);
+	font-size: 12px;
+	font-family: 'Yaldevi', sans-serif;
+}
+
+.link{
+	text-decoration: none;
+	color:inherit;
 }
 
 .item{
