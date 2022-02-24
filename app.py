@@ -16,7 +16,7 @@ users=[
 @app.route("/")
 @app.route("/home")
 def index():
-   return render_template('header.html',title="Index")
+   return render_template('home.html',title="Index")
 
 
 
