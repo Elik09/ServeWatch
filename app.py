@@ -3,6 +3,8 @@ from flask import Flask,render_template,url_for
 app=Flask(__name__)
 
 
+array="my name is allan njuguna".split(' ')
+
 # Main route
 @app.route("/")
 @app.route("/home")
