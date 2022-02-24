@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% if title %}
+	<title>Serve Watch - {{ title }}</title>
+
+	{% else %}
 	<title>Serve Watch</title>
+	
+	{% endif %}
 </head>
 <body>
 	{% blockcontent %}
