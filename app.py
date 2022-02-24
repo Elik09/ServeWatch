@@ -11,7 +11,9 @@ array="my name is allan njuguna".split(' ')
 def index():
 	return render_template('header.html',title="Main Page")
 
-
+@app.route('/array')
+def array():
+	return render_template('index.html',array=array)
 
 # Configurations
 if (__name__ == "__main__"):
