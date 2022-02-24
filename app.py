@@ -27,13 +27,6 @@ def home():
 def about():
 	return render_template('about.html',title="About")
 
-@app.route("/array")
-def array():
-	myarray="this is a simple array".split(' ')
-	return render_template('index.html',title="Index",array=myarray)
-	# return "This is the array page"
-
-
 
 @app.route("/login")
 def login():
