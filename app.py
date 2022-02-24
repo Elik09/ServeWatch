@@ -19,5 +19,22 @@ def array():
 	return render_template('index.html',title="Index",array=myarray)
 	# return "This is the array page"
 
+
+
+@app.route("/login")
+def login():
+	return "This is the login endpoint"
+
+
+@app.route("/register")
+def register():
+	return "This is the register endpoint"
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(host="127.0.0.1",port=5000,use_reloader=True,debug=True)
