@@ -215,9 +215,11 @@ td{
 
 /*Small screens*/
 @media screen and (max-width: 600px) {
-
-	.container{
+	body{
 		background-color: red;
+
+	}
+	.container{
 		width: 100%;
 		margin-top:0px;
 		margin-bottom:10px;
