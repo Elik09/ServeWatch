@@ -14,7 +14,8 @@ def index():
 
 @app.route('/something')
 def checkme():
-	return render_template('index.html')
+	# return render_template('index.html')
+	return "Checking"
 
 
 # Configurations
