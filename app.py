@@ -1,7 +1,7 @@
 from flask import Flask,render_template
 app = Flask(__name__)
 
-array="my name is allan njuguna".split(' ')
+
 
 # Main route
 @app.route("/")
