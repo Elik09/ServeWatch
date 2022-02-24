@@ -23,8 +23,7 @@ def array():
 
 @app.route("/login")
 def login():
-	return "This is the login endpoint"
-
+	return render_template('login.html',title="Login")
 
 @app.route("/register")
 def register():
