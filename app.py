@@ -13,7 +13,10 @@ def index():
 def about():
 	return render_template('about.html',title="About")
 
-
+@app.route("/array")
+def array():
+	myarray="this is a simple array".split(' ')
+	return render_template('index.html',title="Index",array=myarray)
 
 
 if __name__ == '__main__':
