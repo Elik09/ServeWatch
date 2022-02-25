@@ -259,11 +259,10 @@ td{
 		margin-top:0px;
 		margin-bottom:10px;
 	}
-	.container{
-		height: 100%;
-	}
+
 	.form{
-		min-height: 4300px;
+		min-height: 100vh;
+		overflow: hidden;
 	}
 
 	.header-text{
