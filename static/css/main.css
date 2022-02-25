@@ -87,7 +87,7 @@ a {
 }
 
 
-.messagebox{
+.message{
 	background-color:#fff;
 	min-height:100px;
 	overflow:auto;
@@ -98,7 +98,6 @@ a {
 	margin:10px auto;
 	box-shadow: 2px 2px 4px 0px rgb(50, 54, 55,0.2);
 }
-
 
 .container{
 
