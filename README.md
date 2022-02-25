@@ -1,4 +1,4 @@
-<p align="center"><img src="static/images/logo.png" width="200px" height="170px" alt="image should be here"></p>
+<p align="center"><img src="static/images/logo.png" width="200px" height="200px" alt="image should be here"></p>
 <h3 align="center">ServeWatch</h3>
 <p align="center">
 	<samp>Simple project for server security.</samp>
