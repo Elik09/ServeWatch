@@ -8,12 +8,10 @@ app.config['SECRET_KEY'] = 'bed2a11b4ddb6892896d1951e96b435d'
 
 users=[
 	{
-		"  username" : "testing",
+		" username" : "testing",
 		"password" : "testingpass",
 		"email" : "testing@gmail.com"
 	}
-	
-	
 ] 
 
 
@@ -41,9 +39,10 @@ def readme():
 	resp.headers['Content-Type']="text/plain; charset=utf-8"
 	return resp
 
-@app.route('/register')
+@app.route('/register',methods=['GET','POST'])
 def register():
 	form=RegistrationForm()
+	if form.validate_on_submit()
 	return render_template('register.html',title="New Register",form=form)
 
 @app.route('/login')
