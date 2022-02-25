@@ -258,10 +258,11 @@ td{
 		border-radius:0px;
 		margin-top:0px;
 		margin-bottom:10px;
+		overflow: hidden;
 	}
 
 	.form{
-		min-height: 100vh;
+		min-height: 80vh;
 		overflow: hidden;
 	}
 
