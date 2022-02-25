@@ -42,7 +42,8 @@ def readme():
 	return resp
 
 @app.route('/register')
-
+def register():
+	form=RegistrationForm()
 
 @app.route("/signin")
 def login():
