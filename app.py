@@ -31,19 +31,24 @@ def about():
 	return render_template('about.html',title="About")
 
 
+
+
+
+
 @app.route("/README.md")
 def readme():
 	resp=Response(open('README.md','r').read())
 	resp.headers['Content-Type']="text/plain; charset=utf-8"
 	return resp
 
+@app.route('/register')
 
 
-@app.route("/login")
+@app.route("/signin")
 def login():
 	return render_template('login.html',title="Login")
 
-@app.route("/register")
+@app.route("/signup")
 def register():
 	return render_template('register.html',title="Register")
 
