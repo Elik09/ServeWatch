@@ -27,18 +27,9 @@ def about():
 	return render_template('about.html',title="About")
 
 
-def readfile(filename):
-	try:
-		with open(filename,"r") as f:
-			contents=f.read()
-			f.close()
-		return contents
-	except:
-		return "Unable to read the file"
-
 @app.route("/README.md")
 def readme():
-	resp=open('README.md','r').read()
+	resp=Response(open('README.md','r').read())
 	resp.headers['Content-Type']="text/plain; charset=utf-8"
 	return resp
 
