@@ -249,7 +249,7 @@ td{
 /*Small screens*/
 @media screen and (max-width: 650px) {
 
-	.container{
+	.container,.alert-box{
 		width: 100%;
 		margin-top:0px;
 		margin-bottom:10px;
