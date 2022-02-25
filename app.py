@@ -15,6 +15,13 @@ users=[
 ] 
 
 
+def checkkey(name):
+    try:
+        name=request.form[f'{name}']
+        return 1
+    except:
+        return 0
+
 @app.route("/")
 def index():
    return render_template('index.html',title="Index")
@@ -42,7 +49,7 @@ def readme():
 @app.route('/register',methods=['GET','POST'])
 def register():
 	form=RegistrationForm()
-	if form.validate_on_submit():
+	if checkkey('submit'):
 		# flash(f'Account created for {form.username.data}!','success')
 		return "Submitted"
 	else:
