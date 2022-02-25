@@ -95,6 +95,7 @@ a {
 }
 
 .message{
+	color:black;
 	min-height:10px;
 	overflow:auto;
 	width: 90%;
