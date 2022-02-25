@@ -30,7 +30,7 @@ def about():
 @app.route("/README.md")
 @app.route("/readme")
 def readme():
-	with open('README.md','r') as r:
+	with open('README.md','rb') as r:
 		content=r.read()
 	return content
 
