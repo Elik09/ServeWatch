@@ -2,6 +2,9 @@ from flask import Flask,render_template,url_for,Response
 
 app = Flask(__name__)
 
+
+# Setting a secret key
+
 users=[
 	{
 		"  username" : "testing",
