@@ -26,6 +26,6 @@ class LoginForm(FlaskForm):
 	password=PasswordField('Password',
 		validators=[DataRequired()])
 
-	
+	remember=
 
 	submit=SubmitField('Login')
