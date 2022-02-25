@@ -12,8 +12,13 @@
 		{{ form.fname(placeholder="First Name") }}	
 
 		{% if form.username.errors %}
-			
+			{% for error in form.username.errors %}
+				<div class="message {{ category }}">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
 		{% endif %}	
+		
 		{{ form.lname(placeholder="Last Name") }}		
 		{{ form.username(placeholder="Username") }}		
 		{{ form.phone(placeholder="Phone") }}		
