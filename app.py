@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,url_for,Response
 
 app = Flask(__name__)
 
@@ -30,9 +30,9 @@ def about():
 @app.route("/README.md")
 @app.route("/readme")
 def readme():
-	with open('README.md','rb') as r:
-		content=r.read()
-	return content
+	resp=Response(readfile("./README.md"))
+	resp.headers['Content-Type']="text/plain; charset=utf-8"
+	return resp
 
 
 
