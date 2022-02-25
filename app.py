@@ -61,7 +61,7 @@ def login():
 	form=LoginForm()
 	if form.validate_on_submit():
 		for user in users:
-			if (user.email == form.email.data):
+			if (user.get('email','None') == form.email.data):
 				flash(f'Logged In {form.email.data}!','success')
 				return redirect(url_for('home'))
 			else:
