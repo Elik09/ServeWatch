@@ -32,7 +32,6 @@ model, meaning it will run completely in the background without requiring any wo
 
 <br/>
 
-
 ## TODO
 - [x] Database design
 - [x] Create the database
@@ -41,7 +40,6 @@ model, meaning it will run completely in the background without requiring any wo
 - [ ] Add authentication
 
 <br/>
-
 
 ## Dashboard
 - [ ] Failed and Successful login attempts
