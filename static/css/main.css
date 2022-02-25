@@ -97,12 +97,12 @@ a {
 .message{
 	font-size: 16px;
 	color:black;
-	min-height:7px;
+	min-height:5px;
 	overflow:auto;
 	width: 90%;
 	border-radius: 8px;
-	padding:20px;
-	margin:10px auto;
+	padding:10px;
+	margin:5px auto;
 	box-shadow: 1px 1px 2px 0px rgb(50, 54, 55,0.2);
 }
 
