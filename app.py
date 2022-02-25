@@ -55,11 +55,11 @@ def login():
 
 
 @app.route("/signin")
-def login():
+def signin():
 	return render_template('login.html',title="Login")
 
 @app.route("/signup")
-def register():
+def signup():
 	return render_template('register.html',title="Register")
 
 
