@@ -8,14 +8,13 @@
 	<p class="subheading">This is the {{title }} page</p>
 	<form action="" method="POST" class="form">
 		{{ form.hidden_tag() }}
-		<input type="text" name="First Name" placeholder="First Name">
-		<input type="text" name="Last Name" placeholder="Last Name">
-		{{ form.username(placeholder="username") }}		<!-- <input type="text" name="username" placeholder="username"> -->
-		<input type="email" name="email" placeholder="email">
-		<input type="text" name="phone" placeholder="phone">
-		<input type="text" name="password" placeholder="password">
-		<input type="text" name="confirm_password" placeholder="confirm_password">
-		<input type="submit" name="submit">
+
+		{{ form.username(placeholder="Username") }}		
+		{{ form.fname(placeholder="First Name") }}		
+		{{ form.lname(placeholder="Last Name") }}		
+		{{ form.fname(placeholder="fname") }}		
+	
+		
 		<br/>
 		<br/>
 		
