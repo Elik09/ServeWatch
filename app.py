@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 # Setting a secret key
-app.config['SECRET_KEY'] = ''
+app.config['SECRET_KEY'] = 'bed2a11b4ddb6892896d1951e96b435d'
 
 users=[
 	{
