@@ -251,6 +251,7 @@ td{
 
 	.container,.alert-box{
 		width: 100%;
+		border-radius:0px;
 		margin-top:0px;
 		margin-bottom:10px;
 	}
