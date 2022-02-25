@@ -11,15 +11,16 @@
 
 
 
-		{% if form.username.errors %}
-			{{ form.username(placeholder="Username") }}		
-			{% for error in form.username.errors %}
+
+		{% if form.email.errors %}
+			{{ form.email(placeholder="Email") }}		
+			{% for error in form.email.errors %}
 				<div class="message fail">
 					<p>{{ error }}</p>
 				</div>
 			{% endfor%}
 		{% else %}
-			{{ form.username(placeholder="Username") }}		
+			{{ form.email(placeholder="Email") }}		
 		{% endif %}	
 
 
