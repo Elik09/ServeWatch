@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="{{ url_for('static',filename='css/Yaldevi.css') }}">
 
 </head>
+			<div class="message success">
+				<p>test message</p>
+			</div>
 
 	{% with messages = get_flashed_messages(with_categories=true) %}
 		{% if messages %}
