@@ -16,13 +16,13 @@
 <script>
 	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
-			<div class="container {{ category }}">
-				<p>xxxxxxxxxx</p>
-			</div>
 
 	{% with messages = get_flashed_messages(with_categories=true) %}
 		{% if messages %}
 			{% for category,message in messages %}
+			<div class="container {{ category }}">
+				<p>{{ message }}</p>
+			</div>
 			{%endfor %}
 		{% endif %}
 	{% endwith%}
