@@ -9,7 +9,11 @@
 	<form action="/register" method="POST" class="form">
 		{{ form.hidden_tag() }}
 
-		{{ form.fname(placeholder="First Name") }}		
+		{{ form.fname(placeholder="First Name") }}	
+
+		{% if form.username.errors %}
+		
+		{% endif %}	
 		{{ form.lname(placeholder="Last Name") }}		
 		{{ form.username(placeholder="Username") }}		
 		{{ form.phone(placeholder="Phone") }}		
