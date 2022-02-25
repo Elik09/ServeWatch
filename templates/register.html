@@ -7,7 +7,7 @@
 	<br/>
 	<p class="subheading">This is the {{title }} page</p>
 	<form action="/register" method="POST" class="form">
-		<!-- {{ form.hidden_tag() }} -->
+		{{ form.hidden_tag() }}
 
 		{{ form.fname(placeholder="First Name") }}		
 		{{ form.lname(placeholder="Last Name") }}		
