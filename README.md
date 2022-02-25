@@ -40,6 +40,9 @@ model, meaning it will run completely in the background without requiring any wo
 - [x] Add columns to user table
 - [ ] Add authentication
 
+<br/>
+
+
 ## Dashboard
 - [ ] Failed and Successful login attempts
 - [ ] Offline logs
