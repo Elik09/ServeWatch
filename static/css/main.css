@@ -91,7 +91,7 @@ a {
 }
 
 .fail{
-	background-color:rgb(233, 82, 74);
+	background-color:rgb(233, 82, 74,0.6);
 }
 
 .message{
