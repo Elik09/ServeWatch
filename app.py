@@ -59,7 +59,11 @@ def register():
 @app.route('/login')
 def login():
 	form=LoginForm()
-	return render_template('login.html',title="New Login",form=form)
+		if form.validate_on_submit():
+		flash(f'Logged In {form.username.data}!','success')
+		return redirect(url_for('home'))
+	else:
+		return render_template('login.html',title="New Login",form=form)
 
 
 
