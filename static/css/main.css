@@ -10,7 +10,7 @@
 
 body{
 	background-color:rgb(65, 65, 65,0.1);
-	transition:1s ease;
+	
 
 }
 .center{
@@ -118,7 +118,7 @@ a {
 }
 
 .container{
-
+	transition:1s ease;
 	background-color:#fff;
 	min-height:100px;
 	overflow:auto;
