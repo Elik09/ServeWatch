@@ -16,13 +16,13 @@ model, meaning it will run completely in the background without requiring any wo
 <br/>
 
 ## Features
-- [ ] Easy to install
-- [ ] New / edited file detection
-- [ ] Recursive file scanning
-- [ ] Immediate email notifications
-- [ ] Secure login system
-- [ ] Automated background scanning
-- [ ] No hassle & easy to use!
+- [x] Easy to install
+- [x] New / edited file detection
+- [x] Recursive file scanning
+- [x] Immediate email notifications
+- [x] Secure login system
+- [x] Automated background scanning
+- [x] No hassle & easy to use!
 
 <br/>
 
