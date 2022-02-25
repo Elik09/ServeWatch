@@ -10,7 +10,7 @@
 
 body{
 	background-color:rgb(65, 65, 65,0.1);
-	
+
 
 }
 .center{
@@ -251,6 +251,7 @@ td{
 @media screen and (max-width: 650px) {
 
 	.container,.alert-box{
+		transition:1s ease;
 		width: 100%;
 		border-radius:0px;
 		margin-top:0px;
