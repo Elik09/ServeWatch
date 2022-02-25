@@ -55,7 +55,7 @@
 		{% endif %}	
 	
 		{% if form.email.errors %}
-			{{ form.email(placeholder="email") }}		
+			{{ form.email(placeholder="Email") }}		
 			{% for error in form.email.errors %}
 				<div class="message fail">
 					<p>{{ error }}</p>
