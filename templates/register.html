@@ -66,6 +66,17 @@
 		{% endif %}	
 
 
+		{% if form.password.errors %}
+			{{ form.password(placeholder="password") }}		
+			{% for error in form.password.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.password(placeholder="password") }}		
+		{% endif %}	
+
 	
 		{{ form.password(placeholder="Password") }}		
 		{{ form.confirm_password(placeholder="Confirm Password") }}		
