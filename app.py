@@ -44,6 +44,7 @@ def readme():
 @app.route('/register')
 def register():
 	form=RegistrationForm()
+	return render_template('register.html',title="New Register",form=form)
 
 @app.route("/signin")
 def login():
