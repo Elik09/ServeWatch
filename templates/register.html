@@ -33,7 +33,7 @@
 
 
 		{% if form.username.errors %}
-			{{ form.username(placeholder="Last Name") }}		
+			{{ form.username(placeholder="Username") }}		
 			{% for error in form.username.errors %}
 				<div class="message {{ category }}">
 					<p>{{ error }}</p>
