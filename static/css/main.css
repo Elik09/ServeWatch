@@ -95,7 +95,7 @@ a {
 }
 
 .message{
-	font-size: 20px;
+	font-size: 16px;
 	color:black;
 	min-height:10px;
 	overflow:auto;
