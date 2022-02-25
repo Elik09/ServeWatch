@@ -15,12 +15,6 @@ model, meaning it will run completely in the background without requiring any wo
 
 <br/>
 
-## Techstack
-- HTML/CSS/JS
-- Flask/Python
-
-<br/>
-
 ## Features
 - [ ] Easy to install
 - [ ] New / edited file detection
@@ -31,6 +25,13 @@ model, meaning it will run completely in the background without requiring any wo
 - [ ] No hassle & easy to use!
 
 <br/>
+
+## Techstack
+- HTML/CSS/JS
+- Flask/Python
+
+<br/>
+
 
 ## TODO
 - [x] Database design
