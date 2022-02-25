@@ -95,6 +95,10 @@ a {
 }
 
 .message{
+	
+}
+
+.alert-box{
 	font-size: 16px;
 	color:black;
 	min-height:5px;
