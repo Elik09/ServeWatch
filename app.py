@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,Response,flash.redirect
+from flask import Flask,render_template,url_for,Response,flash,redirect
 
 from forms import RegistrationForm, LoginForm
 
@@ -43,7 +43,7 @@ def readme():
 def register():
 	form=RegistrationForm()
 	if form.validate_on_submit():
-		flash(f"<script>alert('Account created for {form.username.data}')</script>")
+		flash(f"<script>alert('Account created for {form.username.data}')</script>",'success')
 		return redirect(url_for('home'))
 	return render_template('register.html',title="New Register",form=form)
 
