@@ -9,8 +9,6 @@
 	<form action="/register" method="POST" class="form">
 		{{ form.hidden_tag() }}
 
-		{{ form.fname(placeholder="First Name") }}	
-
 		{% if form.username.errors %}
 			{{ form.lname(placeholder="Last Name") }}		
 			{% for error in form.username.errors %}
@@ -20,6 +18,17 @@
 			{% endfor%}
 		{% else %}
 			{{ form.lname(placeholder="Last Name") }}		
+		{% endif %}	
+
+		{% if form.username.errors %}
+			{{ form.username(placeholder="Last Name") }}		
+			{% for error in form.username.errors %}
+				<div class="message {{ category }}">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.username(placeholder="Last Name") }}		
 		{% endif %}	
 
 		{{ form.username(placeholder="Username") }}		
