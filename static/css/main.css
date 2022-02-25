@@ -252,18 +252,19 @@ td{
 /*Small screens*/
 @media screen and (max-width: 650px) {
 
+	body{
+		overflow:hidden;
+	}
 	.container,.alert-box{
 		transition:1s ease;
 		width: 100%;
 		border-radius:0px;
 		margin-top:0px;
 		margin-bottom:10px;
-		overflow: hidden;
 	}
 
 	.form{
 		min-height: 80vh;
-		overflow: hidden;
 	}
 
 	.header-text{
