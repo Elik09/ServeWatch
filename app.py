@@ -69,7 +69,7 @@ def login():
 		flash(f'Login Failed for  : {form.email.data}! Please check your username and password','fail')
 		return redirect(url_for('login'))
 	else:
-		return render_template('login.html',title="New Login",form=form)
+		return render_template('login.html',title="Login Page",form=form)
 
 
 
