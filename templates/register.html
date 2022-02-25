@@ -3,7 +3,8 @@
 <div class="container">
 	<h class="medium heading ">{{ title }}</h>
 	<p>This is the {{title }} page</p>
-	<div class="container">
+	
+	<br/>
 	<h class="medium heading" >Create Account</h>
 	<form action="" method="POST" class="form">
 		<input type="text" name="First Name" placeholder="First Name">
@@ -20,7 +21,6 @@
 		<p class="link-text"><a href="{{ url_for('login') }}" class="link">Already have an account? Login Here </a></p>
 	</form>
 
-</div>
 </div>
 {% endblock %}
 
