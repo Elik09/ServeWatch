@@ -37,9 +37,8 @@ def readfile(filename):
 		return "Unable to read the file"
 
 @app.route("/README.md")
-@app.route("/readme")
 def readme():
-	resp=Response(readfile("./README.md"))
+	resp=open('README.md','r').read()
 	resp.headers['Content-Type']="text/plain; charset=utf-8"
 	return resp
 
