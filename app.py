@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,Response,flash,redirect
+from flask import Flask,render_template,url_for,Response,flash,redirect,request
 
 from forms import RegistrationForm, LoginForm
 
