@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = 'bed2a11b4ddb6892896d1951e96b435d'
 
 users=[
 	{
-		" username" : "testing",
+		"username" : "testing",
 		"password" : "testingpass",
 		"email" : "testing@gmail.com"
 	}
@@ -60,8 +60,14 @@ def register():
 def login():
 	form=LoginForm()
 	if form.validate_on_submit():
-		flash(f'Logged In {form.email.data}!','success')
-		return redirect(url_for('home'))
+		for user in users:
+			if (user.email == form.email.data):
+				flash(f'Logged In {form.email.data}!','success')
+				return redirect(url_for('home'))
+			else:
+				pass
+		flash(f'Invalid email : {form.email.data}!','fail')
+		return redirect(url_for('login'))
 	else:
 		return render_template('login.html',title="New Login",form=form)
 
