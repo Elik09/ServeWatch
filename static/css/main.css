@@ -88,7 +88,7 @@ a {
 
 
 .message{
-	background-color:rgb(0, 191, 69,0.5);
+	background-color:rgb(0, 191, 69,0.3);
 	min-height:10px;
 	overflow:auto;
 	width: 90%;
