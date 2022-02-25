@@ -56,11 +56,11 @@ def register():
 	else:
 		return render_template('register.html',title="New Register",form=form)
 
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
 	form=LoginForm()
 	if form.validate_on_submit():
-		flash(f'Logged In {form.username.data}!','success')
+		flash(f'Logged In {form.email.data}!','success')
 		return redirect(url_for('home'))
 	else:
 		return render_template('login.html',title="New Login",form=form)
