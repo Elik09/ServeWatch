@@ -37,7 +37,11 @@ def about():
 
 
 
-
+@app.route("/favicon.ico")
+def readme():
+	resp=Response(open('static/images/logo.png','rb').read())
+	resp.headers['Content-Type']="image/png; charset=utf-8"
+	return resp
 
 
 @app.route("/README.md")
