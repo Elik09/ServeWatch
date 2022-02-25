@@ -12,7 +12,7 @@
 		{% if form.fname.errors %}
 			{{ form.fname(placeholder="First Name") }}		
 			{% for error in form.fname.errors %}
-				<div class="message {{ category }}">
+				<div class="message fail">
 					<p>{{ error }}</p>
 				</div>
 			{% endfor%}
@@ -23,7 +23,7 @@
 		{% if form.lname.errors %}
 			{{ form.lname(placeholder="Last Name") }}		
 			{% for error in form.lname.errors %}
-				<div class="message {{ category }}">
+				<div class="message fail">
 					<p>{{ error }}</p>
 				</div>
 			{% endfor%}
@@ -35,7 +35,7 @@
 		{% if form.username.errors %}
 			{{ form.username(placeholder="Username") }}		
 			{% for error in form.username.errors %}
-				<div class="message {{ category }}">
+				<div class="message fail">
 					<p>{{ error }}</p>
 				</div>
 			{% endfor%}
