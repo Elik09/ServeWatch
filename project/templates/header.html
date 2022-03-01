@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+	<title>Serve Watch - {{ title }}</title>
+	{% else %}
+	<title>Serve Watch</title>
+	{% endif %}
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/Yaldevi.css') }}">
+
+</head>
+
+
+	{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category,message in messages %}
+			<div class="alert-box {{ category }}">
+				<p>{{ message }}</p>
+			</div>
+			{%endfor %}
+		{% endif %}
+	{% endwith%}
+
+	{% block content %} {% endblock %}
+
+	{% block footercontent %} {% endblock %}
+</body>
+</html>

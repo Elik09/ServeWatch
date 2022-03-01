@@ -1,0 +1,105 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="container">
+
+	<h class="medium heading ">{{ title }}</h>
+	<br/>
+	<br/>
+	<!-- <p class="subheading">{{title }} page</p> -->
+	<form action="" method="POST" class="form">
+		{{ form.hidden_tag() }}
+
+		{% if form.fname.errors %}
+			{{ form.fname(placeholder="First Name") }}		
+			{% for error in form.fname.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.fname(placeholder="First Name") }}		
+		{% endif %}	
+
+		{% if form.lname.errors %}
+			{{ form.lname(placeholder="Last Name") }}		
+			{% for error in form.lname.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.lname(placeholder="Last Name") }}		
+		{% endif %}	
+
+
+		{% if form.username.errors %}
+			{{ form.username(placeholder="Username") }}		
+			{% for error in form.username.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.username(placeholder="Username") }}		
+		{% endif %}	
+
+		{% if form.phone.errors %}
+			{{ form.phone(placeholder="phone") }}		
+			{% for error in form.phone.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.phone(placeholder="phone") }}		
+		{% endif %}	
+	
+		{% if form.email.errors %}
+			{{ form.email(placeholder="Email") }}		
+			{% for error in form.email.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.email(placeholder="Email") }}		
+		{% endif %}	
+
+
+		{% if form.password.errors %}
+			{{ form.password(placeholder="password") }}		
+			{% for error in form.password.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.password(placeholder="password") }}		
+		{% endif %}	
+
+		{% if form.confirm_password.errors %}
+			{{ form.confirm_password(placeholder="confirm_password") }}		
+			{% for error in form.confirm_password.errors %}
+				<div class="message fail">
+					<p>{{ error }}</p>
+				</div>
+			{% endfor%}
+		{% else %}
+			{{ form.confirm_password(placeholder="confirm_password") }}		
+		{% endif %}	
+	
+	
+	
+		{{ form.submit(value="Register") }}		
+
+	
+		
+		<br/>
+		<br/>
+		
+		<p class="link-text"><a href="{{ url_for('login') }}" class="link">Already have an account? Login Here </a></p>
+	</form>
+
+</div>
+{% endblock %}
+
