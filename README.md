@@ -1,4 +1,4 @@
-<p align="center"><img src="project/static/images/logo.png" width="200px" height="200px" alt="image should be here"></p>
+<p align="center"><img src="static/images/logo.png" width="200px" height="200px" alt="image should be here"></p>
 <!-- <h3 align="center">ServeWatch</h3> -->
 <p align="center">
 	<samp>Server Security Monitoring tool.</samp>
@@ -37,9 +37,16 @@ model, meaning it will run completely in the background without requiring any wo
 - [x] Create the database
 - [x] Create tables
 - [x] Add columns to user table
-- [ ] Add authentication
+- [x] Add authentication
 
 <br/>
+
+## User Types
+### Admin User
+- add/edit/delete users
+
+### Viewer User
+- view logs
 
 ## Dashboard
 - [ ] Failed and Successful login attempts

@@ -1,5 +1,0 @@
-#! /bin/bash
-message="Fixed typo"
-git add * && sleep 1 && git commit -m "$message"
-git add * || sleep 1 && git commit -m "$message"
-git push
