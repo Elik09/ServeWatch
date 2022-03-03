@@ -2,14 +2,7 @@ from flask import render_template,url_for,Response,flash,redirect,request
 from project import app,db,bcrypt
 from project.models import User,Post
 from project.forms import RegistrationForm, LoginForm
-
-users=[
-	{
-		"username" : "testing", 
-		"password" : "testingpass",
-		"email" : "testing@gmail.com"
-	}
-] 
+from flask_login import login_user, current_user,logout_user
 
 
 @app.route("/")
@@ -37,6 +30,8 @@ def hashpassword(password):
 
 @app.route('/register',methods=['GET','POST']) 
 def register():
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
 	form=RegistrationForm()
 	if form.validate_on_submit():
 		hashed_password=hashpassword(form.password.data)
@@ -51,18 +46,39 @@ def register():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
 	form=LoginForm()
 	if form.validate_on_submit():
-		for user in users:
-			if (user.get('email','None') == form.email.data):
-				flash(f'Logged In {form.email.data}!','success')
-				return redirect(url_for('home'))
-			else:
-				pass
-		flash(f'Login Failed for  : {form.email.data}! Please check your username and password','fail')
-		return redirect(url_for('login'))
+		user=User.query.filter_by(email=form.email.data).first()
+		if user and bcrypt.checkpw(form.password.data.encode(),user.password.encode()):
+			login_user(user,remember=False)
+			flash(f'Logged in {user.username}!','success')
+			return redirect(url_for('home'))
+		else:
+		# if (user.get('email','None') == form.email.data):
+		# 	flash(f'Logged In {form.email.data}!','success')
+		# 	return redirect(url_for('home'))
+		# else:
+		# 	pass
+			flash(f'Login Failed for  : {form.email.data}! Please check your username and password','fail')
+			return redirect(url_for('login'))
 	else:
 		return render_template('login.html',title="Login Page",form=form)
 
 
 
+@app.route('/logout')
+def logout():
+	logout_user()
+	flash(f'Logged Out!','fail')
+	return redirect(url_for('login'))
+
+
+@app.route('/account')
+def account():
+	if current_user.is_authenticated:
+		return render_template('account.html',title="Account")
+	else:
+		flash(f'Login In first! Please login first to access the account page','fail')
+		return redirect(url_for('login'))

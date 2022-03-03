@@ -9,7 +9,7 @@
 	<form action="" method="POST" class="form">
 		{{ form.hidden_tag() }}
 
-		{% if form.fname.errors %}
+		<!-- {% if form.fname.errors %}
 			{{ form.fname(placeholder="First Name") }}		
 			{% for error in form.fname.errors %}
 				<div class="message fail">
@@ -29,7 +29,7 @@
 			{% endfor%}
 		{% else %}
 			{{ form.lname(placeholder="Last Name") }}		
-		{% endif %}	
+		{% endif %}	 -->
 
 
 		{% if form.username.errors %}
@@ -43,7 +43,7 @@
 			{{ form.username(placeholder="Username") }}		
 		{% endif %}	
 
-		{% if form.phone.errors %}
+<!-- 		{% if form.phone.errors %}
 			{{ form.phone(placeholder="phone") }}		
 			{% for error in form.phone.errors %}
 				<div class="message fail">
@@ -52,7 +52,7 @@
 			{% endfor%}
 		{% else %}
 			{{ form.phone(placeholder="phone") }}		
-		{% endif %}	
+		{% endif %}	 -->
 	
 		{% if form.email.errors %}
 			{{ form.email(placeholder="Email") }}		

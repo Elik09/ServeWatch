@@ -37,9 +37,16 @@ model, meaning it will run completely in the background without requiring any wo
 - [x] Create the database
 - [x] Create tables
 - [x] Add columns to user table
-- [ ] Add authentication
+- [x] Add authentication
 
 <br/>
+
+## User Types
+### Admin User
+- add/edit/delete users
+
+### Viewer User
+- view logs
 
 ## Dashboard
 - [ ] Failed and Successful login attempts

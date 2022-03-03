@@ -1,0 +1,11 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="container">
+	<h class="medium heading ">{{ title }}</h>
+	{% if current_user.username %}
+		<p>This is the {{ current_user.username }} Account page</p>
+	{% else %}
+		<p>This is the {{ title }} page</p>
+	{% endif %}
+</div>
+{% endblock %}
