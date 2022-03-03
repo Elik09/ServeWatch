@@ -38,7 +38,6 @@ model, meaning it will run completely in the background without requiring any wo
 - [x] Create tables
 - [x] Add columns to user table
 - [x] Add authentication
-- [x] Add authentication
 
 <br/>
 
