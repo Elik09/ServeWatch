@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block main%}
+<div class="flex h--center">
+	<div class="login">
+		<form class="form flex v--flex" id="loginForm" method="POST">
+	
+			{{ form.hidden_tag() }}
+	
+			<div class="form--element flex v--flex">
+				<label for="email">Email</label>
+				{{ form.email(id="email")}}
+				{% if error in form.email.errors %}
+					{% for error in form.email.errors %}
+						<span class="error">{{ error }}</span>
+					{% endfor %}
+	
+				{% else %}
+					<span class="error"></span>
+				{% endif %}
+			</div>
+			<div class="form--element flex v--flex">
+				<label for="password">Password</label>
+				{{ form.password(id="password")}}
+				{% if error in form.password.errors %}
+					{% for error in form.password.errors %}
+						<span class="error">{{ error }}</span>
+					{% endfor %}
+	
+				{% else %}
+					<span class="error"></span>
+				{% endif %}
+			</div>
+	
+			<div class="form--element flex v--flex">
+				<button class="btn btn--submit" type="submit">Login</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename = '/js/login.js')}}"></script>
+{% endblock %}
