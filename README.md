@@ -1,9 +1,9 @@
-<p align="center"><img src="project/static/images/logo.png" width="200px" height="200px" alt="image should be here"></p>
+<p align="center"><img src="static/images/logo.png" width="200px" height="200px" alt="image should be here"></p>
 <!-- <h3 align="center">ServeWatch</h3> -->
 <p align="center">
 	<samp>Server Security Monitoring tool.</samp>
 	<br/>
-	<a href=""><strong>Explore more of my work »</strong> </a>
+	<a href="https://github/Elik09"><strong>Explore more of my work »</strong> </a>
 	<br/>
 </p>
 
@@ -38,7 +38,6 @@ model, meaning it will run completely in the background without requiring any wo
 - [x] Create tables
 - [x] Add columns to user table
 - [x] Add authentication
-- [ ] Add core functionality
 
 <br/>
 
