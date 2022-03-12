@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}">
+    {% block cssImports%}
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename = '/images/favicon.ico')}}" type="image/x-icon">
+    {% if title %}
+	<title>Serve Watch - {{ title }}</title>
+	{% else %}
+	<title>Serve Watch</title>
+	{% endif %}
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+	{% if messages %}
+    <div class="error--box" id="errorBox">
+		{% for category,message in messages %}
+        <div class="alert-box {{ category }}">
+            <span>{{message}}</span>
+        </div>
+        {%endfor %}
+
+    </div>
+    {% endif %}
+    {% endwith%}
+    
+
+    <header class="header">
+
+        {% block header%}
+        <nav class="nav--bar flex v--center">
+            <div class="container flex v--center s--btwn">
+                <div class="nav--bar__brand">
+                    <a href="#" class="flex--link">
+                        ServerWatch
+                    </a>
+                </div>
+    
+                <div class="nav--bar__nav" id="navBar">
+                    <ul class="nav--items flex">
+                        <li class="nav--item"><a href="#">Home</a></li>
+                        <li class="nav--item"><a href="#">About</a></li>
+                        <li class="nav--item"><a href="#">Services</a></li>
+                        {% if current_user.is_authenticated %}
+                            <li class="nav--item"><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                    <button class="btn--close nav--btn" id="menuClose">
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+    
+                <button class="btn--toggle nav--btn" id="menuOpen">
+                    <i class='bx bxs-grid-alt'></i>
+                </button>
+            </div>
+        </nav>
+        {% endblock %}
+
+    </header>
+    <main class="main">
+        {% block main %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        {% block footer %}
+        {% endblock %}
+    </footer>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="{{ url_for('static', filename = '/js/main.js')}}"></script>
+    {% block scripts %}
+    
+    {% endblock %}
+</body>
+</html>
