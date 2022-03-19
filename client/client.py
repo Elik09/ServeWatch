@@ -26,7 +26,8 @@ arch=platform.uname()[-1]
 machine=platform.uname()[1]
 hmac=f"{user}{machine}{os}{arch}"
 hmac=hashlib.md5(hmac.encode()).hexdigest()
-url=f"http://10.10.10.1:5000/submit/logs"
+# url=f"http://10.10.10.1:5000/submit/logs"
+url=f"http://localhost:5000/submit/logs"
 # print(f"User : {user}")
 
 if user != "root":
@@ -50,7 +51,7 @@ def send_to_db(date_time,message,path):
 	payload={
 		"id":f"{hmac}", # This is a test hash , should be uniq for every machine
 		"machine":f"{machine}", # Depending on the machine
-		"user":f"test", # Temp value for now, It should be the user of the client machine
+		"user":f"{user}", # Temp value for now, It should be the user of the client machine
 		"action":f"{message}",
 		"file":f"{path}",
 		"timestamp":f"{date_time}",
@@ -67,7 +68,7 @@ def send_to_db(date_time,message,path):
 			response=requests.post(url,headers=customheaders,data=payload,timeout=TIMEOUT)
 
 		if '"Message": "Ok"'.lower() not in response.text.lower():
-			print(f"	[-] Unable to upload to database")
+			print(f"	[-] Unable to upload to database - Missing  ok in response")
 		else:
 			print(f"	[+] Uploaded to database")
 	except:
@@ -167,6 +168,9 @@ if __name__ == '__main__':
 	print(f"REMOTE LOG : {url}")
 	print(f"LOCAL LOG :  {logfile}\n")
 	print(f"Watchdog started tracking - {folder_to_track}\n\n")
+
+	print("Make sure to run 'echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'\n\n")
+
 	try:
 		watch = OnMyWatch()
 		watch.run()

@@ -36,7 +36,7 @@ def submit_logs():
     log.user = log_data['user']
     log.action = log_data['action']
     log.file_path  = log_data['file']
-    log.ip = request.remote_addr
+    log.ip = str(request.remote_addr)
     log.modified = datetime.strptime(log_data['timestamp'], '%y%m%d%H%M%S')
 
     db.session.add(log)

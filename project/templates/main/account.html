@@ -6,32 +6,9 @@
 <link rel="stylesheet" href="{{url_for('static', filename = 'css/account.css')}}">
 {% endblock %}
 {% block main %}
-<<<<<<< HEAD
-<div class="container flex">
-	<table id="logTable" style="width:100%" class="table table-striped table-bordered">
-		<thead>
-			<tr>
-			  <th>Id</th>
-			  <th>Machine Id</th>
-			  <th>Title</th>
-			  <th>Content</th>
-			  <th>File</th>
-			  <th>Machine IP</th>
-			  <th>Date Created</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			  {% for post in posts %}
-				<tr>
-					<td>{{ post.id }}</td>
-					<td>{{ post.log_id }}</td>
-					<td>{{ post.user }}@{{ post.machine }}</td>
-					<td>{{ post.action}}</td>
-					<td>{{ post.file_path}}</td>
-					<td>{{ post.ip}}</td>
-					<td>{{ post.date_posted}}</td>
-					
-=======
+
+
+
 <div class=" main--content container flex">
 	<div class="gv">
 		<table id="logTable" class="table table-striped table-bordered grid--table" style="width:100%">
@@ -43,20 +20,20 @@
 					<th>Action</th>
 					<th>File Path</th>
 					<th>Date Of Action</th>
-					<th>Date Created</th>
->>>>>>> refs/remotes/origin/master
+					<th>Machine IP</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				{% for post in posts %}
 					<tr>
-						<td>{{post.log_id}}</td>
+						<td>{{post.id}}</td>
 						<td>{{post.user}}</td>
 						<td>{{ post.machine}}</td>
 						<td>{{ post.action}}</td>
 						<td>{{ post.file_path}}</td>
 						<td>{{post.modified}}</td>
-						<td>{{post.date_posted}}</td>
+						<td>{{post.ip}}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
@@ -84,3 +61,4 @@
 <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
 <script src="{{ url_for('static', filename = '/js/account.js')}}"></script>
 {% endblock %}
+
