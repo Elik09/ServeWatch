@@ -36,37 +36,37 @@
                 <table id="logTable" class="table table-striped table-bordered grid--table" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Log Id</th>
-                            <th>User</th>
-                            <th>Machine</th>
-                            <th>Action</th>
-                            <th>File Path</th>
-                            <th>Date Of Action</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
                             <th>Date Created</th>
+                            <th>Last Seen</th>
+                            <th>Ip Address</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for post in posts %}
+                        {% for user in users %}
                             <tr>
-                                <td>{{post.log_id}}</td>
-                                <td>{{post.user}}</td>
-                                <td>{{ post.machine}}</td>
-                                <td>{{ post.action}}</td>
-                                <td>{{ post.file_path}}</td>
-                                <td>{{post.modified}}</td>
-                                <td>{{post.date_posted}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{ user.role.name}}</td>
+                                <td>{{ user.status}}</td>
+                                <td>{{ user.created_at}}</td>
+                                <td>{{user.last_login}}</td>
+                                <td>{{user.ip}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Log Id</th>
-                            <th>User</th>
-                            <th>Machine</th>
-                            <th>Action</th>
-                            <th>File Path</th>
-                            <th>Date Of Action</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
                             <th>Date Created</th>
+                            <th>Last Seen</th>
+                            <th>Ip Address</th>
                         </tr>
                     </tfoot>
                 </table>

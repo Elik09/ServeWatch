@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 import bcrypt
 from flask_login import LoginManager
 
@@ -8,6 +9,7 @@ from config import config
 
 
 db=SQLAlchemy()
+ma = Marshmallow()
 login_manager=LoginManager()
 login_manager.session_protection = 'strong'
 
@@ -20,6 +22,7 @@ def create_app(env_config):
     config[env_config].init_app(app)
 
     db.init_app(app)
+    ma.init_app(app)
     login_manager.init_app(app)
 
 

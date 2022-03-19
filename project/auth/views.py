@@ -36,7 +36,7 @@ def login():
 
 			return redirect(next)
 
-		flash("Invalide username or password")
+		flash("Invalid username or password")
 
 	return render_template('auth/login.html',title="Login Page", form  = form)
 		

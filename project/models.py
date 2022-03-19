@@ -1,3 +1,5 @@
+from email.policy import default
+from sqlalchemy import Column
 from project import db,login_manager
 from datetime import datetime
 from flask_login import UserMixin
@@ -40,7 +42,7 @@ class User(db.Model,UserMixin):
 
 	status=db.Column(db.String(50),default="active")
 
-	role = db.Column(db.Integer, db.ForeignKey('roles.id'))
+	role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
 	created_at=db.Column(db.DateTime,default=datetime.utcnow)
 
@@ -51,8 +53,6 @@ class User(db.Model,UserMixin):
 	image_file=db.Column(db.String(100),default='default.jpg')
 
 
-	posts=db.relationship('Post',backref='author',lazy="dynamic")
-
 	def __init__(self, **kwargs):
 
 		super(User, self).__init__(**kwargs)
@@ -61,7 +61,7 @@ class User(db.Model,UserMixin):
 
 			if self.email == current_app.config['MAIL_ADMIN'] and current_app.config['MAIL_ADMIN'] is not None:
 
-				self.role = Role.query.filter_by(permissions=0xff).first()
+				self.roles = Role.query.filter_by(permissions=0xff).first()
 
 		if self.role is None:
 
@@ -113,8 +113,7 @@ class Role(db.Model):
 
 	permissions = db.Column(db.Integer)
 
-	users = db.relationship("User", backref = "roles", lazy = "dynamic")
-
+	users = db.relationship('User', backref='role', lazy='dynamic')
 
 	@staticmethod
 	def register_roles():
@@ -146,14 +145,19 @@ class Role(db.Model):
 		return f"Role({self.name})"
 
 
-class Post(db.Model):
-	id=db.Column(db.Integer,primary_key=True)
-	title=db.Column(db.String(100),nullable=False)
+class LogPost(db.Model):
+	__tablename__ = "logs"
+	id = db.Column(db.Integer, primary_key = True)
+	log_id = db.Column(db.String(200), nullable=False)
+	user = db.Column(db.String(200), nullable = False)
+	machine=db.Column(db.String(100),nullable=False)
+	action =db.Column(db.String(100), nullable = False)
+	file_path = db.Column(db.String(500))
+	ip = db.Column(db.String(500),nullable=False,default="None")
+	modified = db.Column(db.DateTime, nullable = False)
 	date_posted=db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-	content=db.Column(db.Text,nullable=False)
-	user_id=db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
 	
 
 	def __repr__(self):
-		return f"Post('{self.title}','{self.date_posted}')"
+		return f"Post('{self.log_id}','{self.date_posted}')"

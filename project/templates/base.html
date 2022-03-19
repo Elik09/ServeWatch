@@ -46,11 +46,14 @@
                 <div class="nav--bar__nav" id="navBar">
                     <ul class="nav--items flex">
                         <li class="nav--item"><a href="#">Home</a></li>
-                        <li class="nav--item"><a href="#">About</a></li>
-                        <li class="nav--item"><a href="#">Services</a></li>
+                        <!-- <li class="nav--item"><a href="/register">Register</a></li> -->
                         {% if current_user.is_authenticated %}
                             <li class="nav--item"><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+                            <li class="nav--item"><a href="{{ url_for('main.account')}}">Account</a></li>
+                        {% else %}
+                            <li class="nav--item"><a href="/login">Login</a></li>
                         {% endif %}
+                        <!-- <li class="nav--item"><a href="/about">About</a></li> -->
                     </ul>
                     <button class="btn--close nav--btn" id="menuClose">
                         <i class='bx bx-x'></i>
@@ -73,8 +76,6 @@
         {% block footer %}
         {% endblock %}
     </footer>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ url_for('static', filename = '/js/main.js')}}"></script>
     {% block scripts %}
     
