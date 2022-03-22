@@ -6,7 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 #import the app instance from the main blueprint
 from project import create_app, db
-from project.models import User, Post, Role
+from project.models import User, LogPost, Role
 
 app = create_app(os.environ.get('ENV_CONFIG') or "default")
 
@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 
 def db_shell_context():
 
-    return dict(User = User, Role = Role, Post = Post, db = db)
+    return dict(User = User, Role = Role, Logs = LogPost, db = db)
 
 
 
