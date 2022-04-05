@@ -29,13 +29,22 @@ def db_shell_context():
 @manager.command
 def deploy():
 
+    
+
     pass
 
 
 @manager.command
 def setAdmin():
 
-    pass
+    admin_user = User()
+    admin_user.email = os.environ.get('ADMIN_EMAIL')
+    admin_user.username = os.environ.get('ADMIN_USERNAME')
+    admin_user.password = os.environ.get('ADMIN_PASS')
+
+    db.session.add(admin_user)
+    db.session.commit()
+
 
 @manager.command
 def setTestUser():

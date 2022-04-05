@@ -15,8 +15,7 @@ log_schema = PostSchema()
 def submit_logs():
 
     log_data = request.get_json(force=True)
-    print(log_data)
-
+   
 
     if not log_data:
 

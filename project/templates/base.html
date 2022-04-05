@@ -38,7 +38,7 @@
         <nav class="nav--bar flex v--center">
             <div class="container flex v--center s--btwn">
                 <div class="nav--bar__brand">
-                    <a href="#" class="flex--link">
+                    <a href="#" class="flex--link" id="Logo">
                         ServerWatch
                     </a>
                 </div>
@@ -76,6 +76,7 @@
         {% block footer %}
         {% endblock %}
     </footer>
+    <script src="{{ url_for('static', filename = '/js/elements.js')}}"></script>
     <script src="{{ url_for('static', filename = '/js/main.js')}}"></script>
     {% block scripts %}
     

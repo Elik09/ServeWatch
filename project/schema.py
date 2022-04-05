@@ -1,7 +1,8 @@
 from datetime import datetime
+from platform import machine
 from project import ma
 from marshmallow import Schema , fields , validates, ValidationError
-from project.models import User
+from project.models import User, Role
 
 
 class PostSchema(ma.Schema):
@@ -22,3 +23,68 @@ class PostSchema(ma.Schema):
         except ValueError as error:
 
             raise ValidationError(error)
+
+
+class UserShema(ma.Schema):
+
+    oldusername = fields.String(required=True)
+    newusername = fields.String(required=True)
+    email = fields.String(required=True)
+    role = fields.String(required = False)
+    password = fields.String(required = False)
+    status = fields.String(required = False)
+    ip = fields.String(required=True)
+
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.user = None
+
+
+    @validates('oldusername')
+    def validate_oldusername(self, oldusername):
+
+        user = User.query.filter_by(username = oldusername).first()
+
+        if user is None:
+
+            raise ValidationError("No record Found")
+
+        self.user = user
+
+
+    @validates('username')
+    def validate_username(self, username):
+
+        if self.user.username != username and User.query.filter_by(username = username).first():
+
+            raise ValidationError("username is aready registered")
+
+
+    @validates('email')
+    def validates_email(self, email):
+
+        if self.user.email !=email and User.query.filter_by(email = email):
+
+            raise ValidationError("email aready registered")
+
+    @validates('role')
+    def validate_role(self, role):
+
+        saved_role = Role.query.filter_by(name = role).first()
+
+        if saved_role is None:
+
+            raise ValidationError("unkown role")
+
+
+    @validates('status')
+    def validate_status(self, status):
+
+        allowed_status = ["active", "suspended"]
+
+        if status not in allowed_status:
+
+            raise ValidationError("unkown status")
+
+    

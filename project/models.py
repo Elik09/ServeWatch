@@ -2,7 +2,7 @@ from email.policy import default
 from sqlalchemy import Column
 from project import db,login_manager
 from datetime import datetime
-from flask_login import UserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from flask import current_app
 from sqlalchemy.orm import backref
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -161,3 +161,16 @@ class LogPost(db.Model):
 
 	def __repr__(self):
 		return f"Post('{self.log_id}','{self.date_posted}')"
+
+
+
+class AnonymousUser(AnonymousUserMixin):
+    def can(self, permissions):
+
+        return False
+
+    def is_admin(self):
+
+        return False
+
+login_manager.anonymous_user = AnonymousUser
