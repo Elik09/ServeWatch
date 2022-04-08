@@ -199,6 +199,37 @@ button {
 .table--row {
     cursor: pointer;
 }
+.tabs {
+	display: flex;
+	flex-wrap: wrap; 
+}
+.tabs label {
+	order: 1; 
+	display: block;
+	padding: 1rem 2rem;
+	margin-right: 0.2rem;
+	cursor: pointer;
+  background: #FFF;
+  font-weight: bold;
+  transition: background ease 0.2s;
+}
+.tabs .tab {
+  order: 99; 
+  flex-grow: 1;
+	width: 100%;
+	display: none;
+  padding: 1rem;
+  background: #fff;
+}
+.tabs input[type="radio"] {
+	display: none;
+}
+.tabs input[type="radio"]:checked + label {
+	background: #90CAF9;
+}
+.tabs input[type="radio"]:checked + label + .tab {
+	display: block;
+}
 
 @media (min-width:32.1875rem){
 	.nav--btn {

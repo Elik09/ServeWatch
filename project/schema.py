@@ -28,7 +28,7 @@ class PostSchema(ma.Schema):
 class UserShema(ma.Schema):
 
     oldusername = fields.String(required=True)
-    newusername = fields.String(required=True)
+    username = fields.String(required=True)
     email = fields.String(required=True)
     role = fields.String(required = False)
     password = fields.String(required = False)

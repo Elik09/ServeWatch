@@ -45,11 +45,19 @@
     
                 <div class="nav--bar__nav" id="navBar">
                     <ul class="nav--items flex">
-                        <li class="nav--item"><a href="#">Home</a></li>
+                        <li class="nav--item"><a href="{{ url_for('main.account')}}">Logs</a></li>
                         <!-- <li class="nav--item"><a href="/register">Register</a></li> -->
                         {% if current_user.is_authenticated %}
-                            <li class="nav--item"><a href="{{ url_for('main.account')}}">Account</a></li>
+                            {% if current_user.username == "admin" %}
+                                <li class="nav--item"><a href="/register">Add New User</a></li>
+                                <li class="nav--item"><a href="/admin/dashboard">Dashboard</a></li>
+                            {% endif %}
+                            
+                            <!-- <li class="nav--item"><a href="{{ url_for('main.account')}}">Account</a></li> -->
                             <li class="nav--item"><a href="{{ url_for('auth.logout')}}">Logout ({{current_user.username}})</a></li>
+
+
+
                         {% else %}
                             <li class="nav--item"><a href="/login">Login</a></li>
                         {% endif %}
@@ -78,6 +86,8 @@
     </footer>
     <script src="{{ url_for('static', filename = '/js/elements.js')}}"></script>
     <script src="{{ url_for('static', filename = '/js/main.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     {% block scripts %}
     
     {% endblock %}

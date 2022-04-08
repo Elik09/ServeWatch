@@ -20,19 +20,10 @@ def index():
 @login_required
 def admin_account():
 	posts = LogPost.query.all()
+	users = User.query.all()
 
-	return render_template('/main/admin.html', posts = posts)
+	return render_template('/main/admin.html', posts = posts,users = users, permissions = Permissions)
 
-@main.route('/edit/logs/', methods = ['POST'])
-@admin_required
-@login_required
-def edit_logs(log_id):
-
-	log_data = request.get_json(force = True)
-
-	if not log_data:
-
-		return jsonify({"Error":"no data sent"}), 400
 
 
 @main.route('/delete/log/<string:log_id>', methods = ['POST'])
@@ -46,20 +37,12 @@ def delete_logs(log_id):
 	db.session.commit()
 
 	return redirect( url_for('main.admin_account'))
-@main.route('/admin/edit/accounts', methods = ["POST", "GET"])
-@admin_required
-@login_required
-def edit_accounts():
-
-	users = User.query.all()
-
-	return render_template('/main/edit.html', users = users, permissions = Permissions)
-
-
 @main.route('/edit/user/', methods = ['POST'])
 @admin_required
 @login_required
 def edit_user():
+
+	user_schema = UserShema()
 
 	user_data = request.get_json(force =True)
 
@@ -70,8 +53,6 @@ def edit_user():
 		return jsonify({"Error":f"{validate_errors}"}), 400
 
 	user = User.query.filter_by(username = user_data['oldusername']).first()
-
-	user_schema = UserShema()
 
 	if not user_data:
 
