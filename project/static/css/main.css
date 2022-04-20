@@ -57,6 +57,10 @@ button {
 .v--flex {
 	flex-direction: column;
 }
+.flex--full_width {
+	width: 100% !important;
+	max-width: 100% !important;
+}
 .grid {
 	display: grid;
 	place-items: center;
@@ -231,6 +235,23 @@ button {
 	display: block;
 }
 
+.add--user {
+	color: #0056b3;
+	position: absolute;
+	right:3rem;
+	top:3rem;
+	font-size: 	3rem;
+	cursor: pointer;
+}
+.errorMessage{ 
+	text-align: center;
+	display: block;
+	font-size: .75rem;
+	color: #fa3333;
+}
+.success{
+	color: #45ff45;
+}
 @media (min-width:32.1875rem){
 	.nav--btn {
 		display: none;	

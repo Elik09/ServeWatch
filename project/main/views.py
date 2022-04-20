@@ -1,4 +1,5 @@
 
+import json
 from . import main
 from flask import render_template,url_for,Response,flash,redirect,request, jsonify
 from project.models import User,LogPost
@@ -8,7 +9,9 @@ from project.utils import admin_required
 
 from project import db
 from project.models import Role, Permissions
-from project.schema import UserShema
+from project.schema import UserShema, AddUserSchema, DeleteUserSchema
+
+import pdb
 
 @main.route("/")
 def index():
@@ -21,30 +24,24 @@ def index():
 def admin_account():
 	posts = LogPost.query.all()
 	users = User.query.all()
-
 	return render_template('/main/admin.html', posts = posts,users = users, permissions = Permissions)
 
 
-
-@main.route('/delete/log/<string:log_id>', methods = ['POST'])
+@main.route('/delete/log', methods = ['POST'])
 @admin_required
 @login_required
-def delete_logs(log_id):
+def delete_logs():
 
-	log = LogPost.query.filter_by(log_id= log_id).first()
+	return jsonify({"Messge":"Ok"}), 200
 
-	db.delete(log)
-	db.session.commit()
-
-	return redirect( url_for('main.admin_account'))
-@main.route('/edit/user/', methods = ['POST'])
+@main.route('/register/user', methods = ["POST"])
 @admin_required
 @login_required
-def edit_user():
+def register_user():
 
-	user_schema = UserShema()
+	user_schema = AddUserSchema()
 
-	user_data = request.get_json(force =True)
+	user_data = request.get_json(force = True)
 
 	validate_errors = user_schema.validate(user_data)
 
@@ -52,7 +49,45 @@ def edit_user():
 
 		return jsonify({"Error":f"{validate_errors}"}), 400
 
+	user= User()
+	user.username = user_data['username']
+	user.email = user_data['email']
+	user.password =  user_data['password']
+	role = Role.query.filter_by(name=user_data['role']).first()
+	user.role = role
+	user.status = user_data['status']
+	db.session.add(user)
+	db.session.commit()
+
+	return jsonify({"message":"user Created"}), 202
+
+
+@main.route('/edit/user/', methods = ['POST'])
+@admin_required
+@login_required
+def edit_user():
+
+	user_data = request.get_json(force =True)
+
+	if not user_data:
+
+		return jsonify({"message":"no data was sent"}), 400
+
+
 	user = User.query.filter_by(username = user_data['oldusername']).first()
+
+	if user is None:
+
+		return jsonify({"message":"user not not found"}), 404
+
+	user_schema = UserShema(user)
+
+	validate_errors = user_schema.validate(user_data)
+
+	if validate_errors:
+
+		return jsonify({"Error":f"{validate_errors}"}), 400
+
 
 	if not user_data:
 
@@ -82,17 +117,27 @@ def edit_user():
 	return jsonify({"Message": "user details updated"}), 200
 
 
-@main.route('/delete/user/<string:username>', methods = ['POST'])
+@main.route('/delete/user', methods = ['POST'])
 @admin_required
 @login_required
-def delete_user(username):
+def delete_user():
 
-	user = User.query.filter_by(username= username).first()
+	user_data = request.get_json(force = True)
 
-	db.delete(user)
+	user_schema = DeleteUserSchema()
+
+	errors = user_schema.validate(user_data)
+
+	if errors:
+
+		return jsonify({"message":errors}), 404
+
+	user = User.query.filter_by(username= user_data['username']).first()
+
+	db.session.delete(user)
 	db.session.commit()
 
-	return redirect( url_for('main.edit_accounts'))
+	return jsonify({"message":"user deleted"})
 
 @main.route('/account')
 @login_required

@@ -1,78 +1,74 @@
 .main--content{
   justify-content: center;
 }
-
-
-
 .cover {
-
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0,0,.7);
   display: grid;
   place-items: center;
-  background-color: #000000a1;
-  z-index: 100;
-  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: .4s ease;
-}
-.show--cover {
-  opacity: 1;
-  pointer-events: all;
-}
-.user--modal {
-  max-width: 34.375rem;
-  width: 100%;
-  background-color: #007bff;
-  color: #fff;
-  padding: 1rem;
-  opacity: .95;
-  z-index: 100;
-  border-radius: 5px;
 }
 
 .close--cover {
-  position:absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3rem;
+  position: absolute;
+  top: 1rem;
+  font-size: 2rem;
+  color: red;
+}
+
+.show--cover {
+  visibility: visible;
+  pointer-events: all;
+}
+.popup {
+  position: absolute;
   color: #fff;
-  transition: all .4s ease;
-}
-.close--cover:hover {
-  color:#820000;
+  width: 30rem;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #0056b3;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.edit--form {
+.show--modal {
+  visibility: visible;
+  pointer-events: all;
+}
 
+.flex--form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
-
-.form--element {
-  max-width: 16.75rem;
+.form--input {
   width: 45%;
+  max-width: 34rem;
   display: flex;
   flex-direction: column;
   gap: .4rem;
-  margin-bottom: .5rem;
 }
-
-.form--element input {
-  padding: .4rem;
-}
-label {
-  margin: 0;
-}
-select {
-  padding: .4rem;
+.form--input input, select{
+  padding: .2rem;
   background-color: #fff;
   border: none;
-  outline: none;
+}
+.btn--group {
+  margin:1rem 0;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.btn {
+  padding: .5rem 2rem;
+  background-color: #fff;
+}
+.long--flex {
+  width: calc(90% + 1rem);
 }
 body{
 	overflow-y:scroll;

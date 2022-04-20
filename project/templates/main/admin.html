@@ -7,72 +7,116 @@
 {% endblock %}
 {% block main %}
 {% if current_user.can(permissions.EDITACCOUNT)%}
-<div class="cover" id="modalCover">
-    <div class="user--modal">
+{% endif %}
+<div class="cover">
+
+    <button class="close--cover" id="closeCover"><i class='bx bx-x'></i></button>
+    <div class="user--modal popup">
         <div class="modal--header">
-            <span>EDIT USER DETAILS</span>
+            <h3 class="modal--title">User</h3>
         </div>
         <div class="modal--body">
-            <span class="error--message" id="modalNotice"></span>
-            <form action="#" class="edit--form" id="userEditForm">
-    
-                <div class="form--element">
+            <span class="errorMessage"></span>
+            <form action="#" class="userEditForm flex--form" id="userEditForm">
+                <div class="form--input">
                     <label for="username">Username</label>
-                    <input type="text" id="username">
-                    <span class="error" id="usernameError"></span>
+                    <input class="input" class="input" type="text" id="username">
+                    <span class="error"></span>
                 </div>
-                <div class="form--element ">
-                    <label for="email">Email</label>
-                    <input type="email" id="email">
-                    <span class="error" id="emailError"></span>
-                </div>
-                <div class="form--element">
-                    <label for="passwordEdit1">Password</label>
-                    <input type="password" id="passwordEdit">
-                    <span class="error" id="passwordEditError"></span>
-                </div>
-                <div class="form--element">
-                    <label for="passwordEdit2">Confirm Password</label>
-                    <input type="password" id="passwordEditConf">
-                    <span class="error" id="passwordConfError"></span>
-                </div>
-    
-                <div class="form--element">
+                <div class="form--input">
                     <label for="ipAddress">Ip Address</label>
-                    <input type="text" id="ipAddress">
-                    <span class="error" id="ipError"></span>
-                    <ip></ip>
+                    <input class="input" type="text" id="ipAddress">
+                    <span class="error"></span>
                 </div>
-                <div class="form--element">
-                    <label for="role">Role</label>
-                    <select name="role" id="role">
-                        <option value="admin">admin</option>
+                <div class="form--input long--flex">
+                    <label for="email">Email</label>
+                    <input class="input" type="email" id="email">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="">Password</label>
+                    <input class="input" type="password" id="passwordEdit">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="">Confirm Password</label>
+                    <input class="input" type="password" id="passwordEditConf">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input"><label for="role">Role</label>
+                    <select name="" id="role">
                         <option value="viewer">viewer</option>
+                        <option value="admin">admin</option>
                     </select>
                 </div>
-                <div class="form--element">
+                <div class="form--input">
                     <label for="status">Status</label>
                     <select name="status" id="status">
                         <option value="active">active</option>
                         <option value="suspended">suspended</option>
                     </select>
                 </div>
-                <div class="form--element">
-                    <input type="submit" value="Edit User Details" id="submit--userDetails">
+
+                <div class="form--input btn--group long--flex">
+                    <button disabled = "true" active = "false" class="btn add" id="addNewUser">Add</button>
+                    <button disabled = "true" active = "false" class="btn update" id="updateUser">Update</button>
+                    <button disabled = "true" active = "false" class="btn delete" id="deleteUser">Delete</button>
                 </div>
             </form>
         </div>
-        <div class="modal--footer">
-    
+    </div>
+    <div class="log--modal popup">
+        <div class="modal--header">
+            <h3 class="modal--title">Logs</h3>
+        </div>
+
+        <div class="modal--body">
+            <span class="errorMessage"></span>
+            <form action="#" class="logEditForm  flex--form" id="logEditForm">
+                <div class="form--input">
+                    <label for="logId">Log Id</label>
+                    <input disabled = "disabled"  type="text" id="logId">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="user">Machine User</label>
+                    <input disabled = "disabled" class="input" type="text" id="user">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="machine">Machine Name</label>
+                    <input disabled = "disabled"  type="text" id="machine">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="">Action</label>
+                    <input disabled = "disabled"  type="text" id="action">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input long--flex">
+                    <label for="filepath">File Path</label>
+                    <input disabled = "disabled"  type="text" id="filepath">
+                    <span class="error"></span>
+                </div>
+                <div class="form--input">
+                    <label for="dateOfCreation">Date Of Creation</label>
+                    <input disabled = "disabled"  type="text" name="date" id="dateOfCreation">
+                </div>
+                <div class="form--input">
+                    <label for="dateOfAction">Date Of Action</label>
+                    <input disabled = "disabled"  type="text" name="date" id="dateOfAction">
+                </div>
+
+                <div class="form--input btn--group long--flex">
+                    <button  class="btn update" id="updateUser">Cancel</button>
+                    <button  class="btn delete" id="deleteUser">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    <i class='bx bx-x close--cover' id="closeCover"></i>
 </div>
-{% endif %}
-
-
 <div class="grid admin--main">
+    <button class="add--user" id="addUser"><i class='bx bxs-user-plus'  ></i></button>
     <div class="tabs container">
         <input type="radio" name="tabs" id="tabone" checked="checked">
         <label for="tabone">User Accounts</label>
@@ -93,7 +137,7 @@
                     </thead>
                     <tbody>
                         {% for user in users %}
-                                <tr class="table--row" id="tableRow">
+                                <tr class="table--row" id="userRow">
                                     <td>{{user.username}}</td>
                                     <td>{{user.email}}</td>
                                     <td>{{ user.role.name}}</td>
@@ -137,7 +181,7 @@
                         </thead>
                         <tbody>
                             {% for post in posts %}
-                                <tr>
+                                <tr class="table--row" id="logRow">
                                     <td>{{post.id}}</td>
                                     <td>{{post.user}}</td>
                                     <td>{{ post.machine}}</td>
@@ -172,127 +216,234 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
 <script src="{{ url_for('static', filename = '/js/account.js')}}"></script>
-<script src="{{ url_for('static', filename = '/js/admin.js')}}"></script>
 
 {% if current_user.is_authenticated and current_user.is_admin() %}
+
 <script>
-// user edit 
-const url = "{{ url_for('main.edit_user', _external = True)}}"
-const dataPayload = {};
-const userEditObj = {
+// prevent form from default submiton button click
+userEditForm.addEventListener('submit', event=>event.preventDefault())
+logEditForm.addEventListener('submit', event=>event.preventDefault())
 
-    "modalPush":function(modalData){
+const userDataUpdate = {};
+addUser.addEventListener("click", ()=>{
+    // show the cover and show the user dialog with the add user button  enabled
+    cover.classList.add("show--cover")
+    userModalAction("add");
+})
 
-        // populate the form fields with modalData
+closeCover.addEventListener("click", ()=>{
+    // get all the buttons whose diabled attribute is set to false and set ti to true
+    let activeBtns =  document.querySelectorAll("button[active=true]")
 
-        usernameInput.value = modalData['username']
-        emailInput.value = modalData['email']
-        roleInput.value = modalData['role']
-        statusInput.value = modalData['status']
-        ipInput.value = modalData['ip']
+    let vissibleModals = document.querySelectorAll('.show--modal')
 
-        // display the modal fields
-        modalCover.classList.add('show--cover')
-    
-    },
-    "modalPop": function(){
-        modalCover.classList.remove('show--cover')
-    },
-    "postRequest": function (postData) {
-        fetch(url, {
+    activeBtns.forEach(btn=>{
+        btn.disabled = true;
+    })
+    vissibleModals.forEach(modal=>{
+        modal.classList.remove('show--modal')
+    })
 
-            method :"POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body:JSON.stringify(postData)
-        }).then(data.json())
-        .then(data=>{
+    cover.classList.remove('show--cover');
+    resetInputs();
+})
 
-            console.log(data)
-        }) 
-    }
-}
-tableRows.forEach(row => {
+// click event on the user rows 
+
+userRows.forEach(row=>{
 
     row.addEventListener('click', ()=>{
-        let columns = row.children;
-        // Payload object will be created once the click event occurs
+        cover.classList.add("show--cover")
+        userModalAction("update");
+        // update the form elements with the data from the  table row
+        updateFormElements(row.children)
+        updateUserData();
 
-        dataPayload.oldusername =columns[0].innerText,
-        dataPayload.username = columns[0].innerText,
-        dataPayload.email = columns[1].innerText,
-        dataPayload.role = columns[2].innerText,
-        dataPayload.status = columns[3].innerText,
-        dataPayload.ip = columns[6].innerText
-
-        // call the  display modal function with the given data
-        userEditObj.modalPush(dataPayload);
-        
     })
-});
+})
 
-// add a change event lister to the password and  the username elements
+function userModalAction(action) {
+    // pop the modal up
+    userModal.classList.add('show--modal')
+    
+    // activate the appropriate button depending on the action
+    switch (action) {
+        case "add":
+            addNewUser.disabled = false;
+            addNewUser.setAttribute('active', "true")
+            // add a required attribute to all the input fields
+            enforceRequired()
+            break;
+    
+        case "update":
+            updateUser.setAttribute('active', "true")
+            updateUser.disabled = false;
+            deleteUser.setAttribute('active', "true")
+            deleteUser.disabled = false;
+            break;
 
-usernameInput.addEventListener('change', ()=>{
-
-    if(usernameInput.value !==dataPayload.username){
-
-        dataPayload.username = usernameInput.value
+        default:
+            break;
     }
+    
+}
+
+function updateFormElements(rowData) {
+
+    usernameInput.value = rowData[0].innerText;
+    emailInput.value = rowData[1].innerText;
+    roleInput.value = rowData[2].innerText;
+    statusInput.value = rowData[3].innerText;
+    ipInput.value = rowData[6].innerText;    
+}
+
+function resetInputs() {
+   let inputs = document.querySelectorAll(".input");
+   inputs.forEach(input=>{
+       input.value = "";
+   })
+}
+
+function enforceRequired() {
+
+    let inputs = document.querySelectorAll(".input")
+    inputs.forEach(input=>{
+        input.setAttribute("required", true)
+    })
+    
+}
+
+function apiCall(url, payLoad = undefined){
+    let data;
+    let currentModal = document.querySelector('.show--modal');
+    let messageDisplay = currentModal.querySelector(".errorMessage");
+
+    if(payLoad !== undefined){
+
+        data = JSON.stringify(payLoad)
+    }
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+         },
+         body:data
+    }).then(response=>response.json()
+    ).then(data=>{
+
+        messageDisplay.classList.add("success")
+        messageDisplay.innerText = "Success";
+        let currentModal = document.querySelector(".show--modal");
+        currentModal.classList.remove("show--modal")
+        cover.classList.remove("show--cover")
+
+    }).catch(error=>{
+        messageDisplay.classList.remove("success")
+        messageDisplay.innerText = "An Error Occured Try Again";
+    })
+}
+
+function updateUserData() {
+
+    userDataUpdate.oldusername = usernameInput.value;
+    userDataUpdate.username = usernameInput.value;
+    userDataUpdate.email = emailInput.value;
+    userDataUpdate.role = roleInput.value;
+    userDataUpdate.status = statusInput.value;
+    userDataUpdate.ip = ipInput.value;
+    
+}
+addNewUser.addEventListener("click", ()=>{
+
+    // construct new user data
+
+    let inputs = document.querySelectorAll("input[required='true']")
+    let userDetails = {}
+
+    let endpointUrl ="{{url_for('main.register_user', _external = True )}}"
+
+    inputs.forEach(input=>{
+
+        if(input.value === ""){
+            input.classList.add("error--outline")
+            input.nextElementSibling. innerText = "** This field is required"
+
+            return
+        }
+    })
+
+    userDetails.username = usernameInput.value;
+    userDetails.email = emailInput.value;
+    userDetails.role = roleInput.value;
+    userDetails.status = statusInput.value;
+    userDetails.ip = ipInput.value;
+    userDetails.password = passwordConfInput.value;
+
+    // post the data to the url
+    apiCall(endpointUrl, userDetails)
+})
+
+updateUser.addEventListener("click", ()=>{
+
+// construct update user data
+    deleteUser.disabled = true
+    deleteUser.setAttribute('active', "false")
+
+    let endpointUrl = "{{ url_for('main.edit_user', _external = True )}}"
+
+    apiCall(endpointUrl, userDataUpdate)
+
+})
+
+deleteUser.addEventListener("click", ()=>{
+
+    let data = {"username":userDataUpdate.oldusername}
+    let endpointUrl = "{{ url_for('main.delete_user', _external = True )}}"
+    updateUser.disabled = true
+    updateUser.setAttribute('active', "false")
+
+    apiCall(endpointUrl, data)
+})
+
+usernameInput.addEventListener("change", event=> changeValue(event.target.value, "username"))
+emailInput.addEventListener("change", event=> changeValue(event.target.value, "email"))
+roleInput.addEventListener("change", event=> changeValue(event.target.value, "role"))
+statusInput.addEventListener("change", event=> changeValue(event.target.value, "status"))
+
+passwordInput.addEventListener("change", event=>{
+    
+    let confirmPwd = passwordConfInput.value
+    if(event.target.value !== confirmPwd){
+        // show an error on the confirm password input
+        passwordConfInput.classList.add("error--inline")
+        showError(passwordConfInput, "Password not matching!")
+    }
+
+})
+
+passwordConfInput.addEventListener("change", ()=>{
+
+    if(this.value === passwordInput.value){
+        
+        // show an error on the confirm password input
+        this.classList.remove("error--inline")
+        showError(this, "")
+    }
+    userDataUpdate.password = passwordConfInput.value
     
 })
 
-passwordInput.addEventListener('change', ()=>{
+function changeValue(value, field){
+    
+    userDataUpdate[field] = value;
+}
 
-    if(passwordInput.value === ""){
+function showError(element, message = "") {
+    element.nextElementSibling.innerText = message;
+}
 
-        submitUserBtn.disabled = false;
-    }
 
-    if (passwordInput.value !== passwordConfInput.value) {
 
-        passwordConfInput.classList.add('error--outline')
-        passwordConfInput.nextElementSibling.innerText = "password don't match";
-    // disable the submit btn
-        submitUserBtn.disabled = true;
-    }
-
-    else {
-        passwordConfInput.classList.remove('error--outline')
-        passwordConfInput.nextElementSibling.innerText = "";
-    // disable the submit btn
-        submitUserBtn.disabled = false;
-    }
-})
-
-passwordConfInput.addEventListener('change', ()=>{
-    if(passwordConfInput.value === passwordInput.value){
-        passwordConfInput.classList.remove('error--outline')
-        passwordConfInput.nextElementSibling.innerText = "";
-        submitUserBtn.disabled = false;
-
-        dataPayload.password = passwordConfInput.value;
-
-    }
-})
-closeCover.addEventListener('click', userEditObj.modalPop)
-userEditForm.addEventListener('submit', event=>{
-
-    // prevent the form from submitting
-    event.preventDefault()
-    // perform an ajax call
-    userEditObj.postRequest(dataPayload);
-})
-
-roleInput.addEventListener('change', ()=>{
-
-    dataPayload.role = roleInput.value
-})
-statusInput.addEventListener('change', ()=>{
-
-    dataPayload.status = statusInput.value
-})
 </script>
 {% endif %}
 {% endblock %}
