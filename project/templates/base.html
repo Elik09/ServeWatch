@@ -45,7 +45,6 @@
     
                 <div class="nav--bar__nav" id="navBar">
                     <ul class="nav--items flex">
-                        <li class="nav--item"><a href="{{ url_for('main.account')}}">Logs</a></li>
                         <!-- <li class="nav--item"><a href="/register">Register</a></li> -->
                         {% if current_user.is_authenticated %}
                             {% if current_user.username == "admin" %}
@@ -54,6 +53,7 @@
                             {% endif %}
                             
                             <!-- <li class="nav--item"><a href="{{ url_for('main.account')}}">Account</a></li> -->
+                            <li class="nav--item"><a href="{{ url_for('main.account')}}">Logs</a></li>
                             <li class="nav--item"><a href="{{ url_for('auth.logout')}}">Logout ({{current_user.username}})</a></li>
 
 

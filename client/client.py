@@ -19,7 +19,7 @@ try:
 except:
 	folder_to_track="/tmp"
 
-
+TIMEOUT=10
 send_json=True # Decides whether to send the Post request as json or not
 user=os.getenv('USER')
 os=platform.uname()[0]
@@ -27,9 +27,7 @@ arch=platform.uname()[-1]
 machine=platform.uname()[1]
 hmac=f"{user}{machine}{os}{arch}"
 hmac=hashlib.md5(hmac.encode()).hexdigest()
-# url=f"http://10.10.10.1:5000/submit/logs"
 url=f"http://localhost:5000/submit/logs"
-# print(f"User : {user}")
 
 if user != "root":
 	logfile=f"/home/{user}/logfile.log"
@@ -45,10 +43,26 @@ def logtofile(content):
 		print(f"Could not add content to logfile '{logfile}'")
 
 
-def send_to_db(date_time,message,path):
-	global user,arch,machine,os,hmac,url
+def nmap_scan():
+	# for nmap features
+	import nmap
 
-	TIMEOUT=3
+	# set some variables
+	target_hosts = "192.168.1.0/24"
+	nmap_arguments = "-e wlan0 -sn"
+
+	# initialise the port scanner
+	nm = nmap.PortScanner()
+
+	nm.scan(hosts=target_hosts, arguments=nmap_arguments)
+
+	for host in nm.all_hosts():
+	    if 'mac' in nm[host]['addresses']:
+	        print(nm[host]['addresses'], nm[host]['vendor'])
+
+
+def send_to_db(date_time,message,path):
+	global user,arch,machine,os,hmac,url,TIMEOUT
 	payload={
 		"id":f"{hmac}", # This is a test hash , should be uniq for every machine
 		"machine":f"{machine}", # Depending on the machine
@@ -70,11 +84,13 @@ def send_to_db(date_time,message,path):
 
 		if '"Message": "Ok"'.lower() not in response.text.lower():
 			print(f"	[-] Unable to upload to database - Missing  ok in response")
+			return
 		else:
 			print(f"	[+] Uploaded to database")
-	except:
+			return
+	except Exception as e:
 		fail=end=""
-		print(f"{fail}  [-] Unable to upload to database - GET Query failed or took too long{end}")
+		print(f"{fail}  [-] Unable to upload to database - GET Query failed or took too long.Error {e}{end}")
 		return
 
 
