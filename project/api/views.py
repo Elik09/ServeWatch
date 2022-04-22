@@ -18,7 +18,7 @@ log_schema = PostSchema()
 # Configuration
 sender_address = 'servewatch@gmail.com'
 sender_pass = 'Servewatch2022!'
-receiver_address = 'allannjugush@gmail.com'
+receiver_address = 'tempmailctf@gmail.com'
 mail_notifications="Enabled"
 
 
