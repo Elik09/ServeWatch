@@ -21,7 +21,7 @@ sender_pass = 'Servewatch2022!'
 
 # Enter the emails to send to separated with a space
 receiver_addresses = 'plexeric40@gmail.com tempmailctf@gmail.com'
-
+receiver_addresses=receiver_addresses.split(' ')
 mail_notifications="Enabled"
 
 
@@ -29,7 +29,7 @@ def sendmessage(subject,mail_content):
     global receiver_addresses,sender_address,sender_pass
     if mail_notifications != "Enabled":
         return False
-    for receiver_address in receiver_addresses.split(" "):
+    for receiver_address in receiver_addresses:
         print(f"[+] Sending email to {receiver_address}")
         try:
             #Setup the MIME
@@ -59,10 +59,10 @@ def sendmessage(subject,mail_content):
             session.sendmail(sender_address, receiver_address, text)
             session.quit()
             print(f'[+] Mail Sent to {receiver_address}')
-            return True
         except Exception as e :
             print(f'[+] Email not sent to {receiver_address} {e}')
             return False
+    return True
 
 
 @api.route('/submit/logs', methods = ['POST'])
