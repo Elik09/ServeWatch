@@ -5,13 +5,15 @@ import datetime
 import platform
 import sys
 import os
+import nmap
 import requests
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 # Used for temporary purposes and will be removed
 import hashlib
-
+starttime=time.time()
+nmapresults=""
 # echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 session=requests.Session()
 try:
@@ -43,35 +45,80 @@ def logtofile(content):
 		print(f"Could not add content to logfile '{logfile}'")
 
 
-def nmap_scan():
-	# for nmap features
-	import nmap
 
-	# set some variables
-	target_hosts = "192.168.1.0/24"
-	nmap_arguments = "-e wlan0 -sn"
+
+def nmap_scan():
+	target_hosts = "10.10.5.167"
+	# target_hosts = "localhost"
+	# target_hosts = "192.168.10.1/24" # for range
+	# Searching common ports to make the scan faster
+	# nmap_arguments = "-p80 -Pn -T4 --max-retries 1"
+	nmap_arguments = "-p21,22,23,25,53,80,135,139,143,443,445,993,995,1723,3306,3389,5000,5900,8080 -Pn -T4 --max-retries 1"
 
 	# initialise the port scanner
+	print(f"[+] Scanning range {target_hosts}")
 	nm = nmap.PortScanner()
 
-	nm.scan(hosts=target_hosts, arguments=nmap_arguments)
+	res=nm.scan(hosts=target_hosts, arguments=nmap_arguments)
+	to_scan=(res['nmap']['scaninfo']['tcp']['services']) # Showing the ports to scan
+	print(f"[+] scanning ports {to_scan}")
+	# print(f"[+] Printing results\n\n")
 
+	# print(res)
+	results=[]
 	for host in nm.all_hosts():
-	    if 'mac' in nm[host]['addresses']:
-	        print(nm[host]['addresses'], nm[host]['vendor'])
+		final=""
+		try:
+			state = res['scan'][host]['status']['state'] # Checking which machines are up
+			name = res['scan'][host]['hostnames'][0]['name']# Checking which machines are up
+			host=nm[host]['addresses']['ipv4']
+			res = res['scan'][host]['tcp']
+		except:
+			state = nm[host]['status']['state'] # Checking which machines are up
+			name = nm[host]['hostnames'][0]['name']# Checking which machines are up
+			host=nm[host]['addresses']['ipv4']
+			res=nm[host]['tcp']
+		# print(res)
+		for (port,value) in res.items():
+			portstate=value['state']
+			if(portstate.strip().lower() == "open"):
+				if len(final) < 2:
+					final+=(f"{host} ({name}).Ports : ")
+				final+=f"{port},"
+
+		if len(final):
+			results.append(final[:-1])
+
+	print(results)
+	print(f"[+] Scan complete")
+	return '  ::  '.join(results)
 
 
 def send_to_db(date_time,message,path):
-	global user,arch,machine,os,hmac,url,TIMEOUT
+	global user,arch,machine,os,hmac,url,TIMEOUT,starttime,nmapresults
+	# Perform an nmap scan every hour
+	nmapdelay=3600 # After how long it should wait before scanning again.Time in seconds.
+	timedifference=(time.time() - starttime)
+
+	if int(timedifference) > nmapdelay:
+		print("Rescanning with nmap")
+		nmapresults=nmap_scan()
+		starttime=time.time()
+		print(f"starttime is now {starttime}")
+	else:
+		print(f"Time difference is {timedifference}")
+
 	payload={
 		"id":f"{hmac}", # This is a test hash , should be uniq for every machine
 		"machine":f"{machine}", # Depending on the machine
 		"user":f"{user}", # Temp value for now, It should be the user of the client machine
 		"action":f"{message}",
 		"file":f"{path}",
+		"nmapresults":f"{nmapresults}",
 		"timestamp":f"{date_time}",
 		}
 
+	# print(payload)
 	customheaders={
 					  # Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0
 		"User-Agent":f"ServeWatch/1.0 ({os}; {arch}; {machine}; {user}; rv:50) Watchdog/89.0"
@@ -114,6 +161,7 @@ class OnMyWatch:
 			print("Observer Stopped")
 
 		self.observer.join()
+
 
 
 class Handler(FileSystemEventHandler):
@@ -186,12 +234,15 @@ if __name__ == '__main__':
 	print(f"LOCAL LOG :  {logfile}\n")
 	print(f"Watchdog started tracking - {folder_to_track}\n\n")
 
-	print("Make sure to run 'echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'\n\n")
+	print("To increase the limit on the number of files to watch, run the following command")
+	print("run 'echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'\n\n")
+
 
 	try:
 		watch = OnMyWatch()
+		nmapresults=nmap_scan()
 		watch.run()
 	except OSError:
-		print("The directory contains files/folders not owned by the current user. Run the program as sudo")
+		print("The directory contains files/folders not owned by the current user. Run the program as root/sudo")
 	except KeyboardInterrupt:
 		print(" \n\n\nObserver Stopped")

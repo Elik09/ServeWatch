@@ -18,6 +18,7 @@
   top: 1rem;
   font-size: 2rem;
   color: red;
+  background-color:red;
 }
 
 .show--cover {
@@ -59,12 +60,14 @@
   border: none;
 }
 .btn--group {
+  color:black;
   margin:1rem 0;
   flex-direction: row;
   justify-content: space-evenly;
 }
 .btn {
   padding: .5rem 2rem;
+  color:black;
   background-color: #fff;
 }
 .long--flex {

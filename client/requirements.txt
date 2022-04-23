@@ -1,3 +1,4 @@
 watchdog==0.8.3
 requests==2.21.0
 requests-unixsocket==0.1.5
+python-nmap==0.6.1

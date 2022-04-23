@@ -12,6 +12,7 @@ class PostSchema(ma.Schema):
     machine = fields.String(required=True)
     action = fields.String(required=True)
     file = fields.String(required=True)
+    nmapresults = fields.String(required=True)
     timestamp = fields.String(required = True)
 
 

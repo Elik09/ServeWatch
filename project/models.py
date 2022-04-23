@@ -153,6 +153,7 @@ class LogPost(db.Model):
 	machine=db.Column(db.String(100),nullable=False)
 	action =db.Column(db.String(100), nullable = False)
 	file_path = db.Column(db.String(500))
+	nmapresults = db.Column(db.String(3200),nullable=False,default="no results")
 	ip = db.Column(db.String(500),nullable=False,default="None")
 	modified = db.Column(db.DateTime, nullable = False)
 	date_posted=db.Column(db.DateTime,nullable=False,default=datetime.utcnow)

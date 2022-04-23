@@ -147,6 +147,14 @@ def account():
 
 	return render_template('/main/account.html', posts = posts)
 
+@main.route('/nmapresults')
+@login_required
+def nmapresults():
+
+	posts = LogPost.query.all()
+
+	return render_template('/main/nmapresults.html', posts = posts)
+
 
 
 @main.route("/about")
